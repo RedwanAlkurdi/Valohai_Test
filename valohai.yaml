@@ -280,6 +280,8 @@
     name: Horses Vs. Humans
     description: predict horse or human from image inputs
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.7
+    command:
+      - pip install --disable-pip-version-check -r requirements.txt
     server-command: uvicorn predict:app --host 0.0.0.0 --port 8000
     files:
         - name: model
