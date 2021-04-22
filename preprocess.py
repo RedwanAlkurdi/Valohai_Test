@@ -12,9 +12,9 @@ TEST_IMAGES_DIR = os.path.join(INPUTS_DIR, "test-set-images")
 
 
 # Get the Horse or Human dataset
-path_horse_or_human = TRAIN_IMAGES_DIR + "train.zip"
+path_horse_or_human = TRAIN_IMAGES_DIR + "/train.zip"
 # Get the Horse or Human Validation dataset
-path_validation_horse_or_human = TEST_IMAGES_DIR + "validation.zip"
+path_validation_horse_or_human = TEST_IMAGES_DIR + "/validation.zip"
 
 
 
