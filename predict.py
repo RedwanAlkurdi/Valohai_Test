@@ -45,3 +45,11 @@ async def predict(image: UploadFile = File(...)):
         return "prediction: human"
     if p < 0.5:
         return "prediction: horse"
+
+
+"""
+curl -X 'POST' \
+  'http://127.0.0.1:8000/scorefile/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'image=@horse1-241.png;type=image/png'"""

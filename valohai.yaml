@@ -277,7 +277,7 @@
         description: Model output file from TensorFlow
         path: model.pb
 - endpoint:
-    name: Horses Vs. Humans
+    name: Horses_Vs_Humans
     description: predict horse or human from image inputs
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.8-2020-12-19
     server-command: uvicorn predict:app --host 0.0.0.0 --port 8000
