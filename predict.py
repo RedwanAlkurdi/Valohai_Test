@@ -18,8 +18,9 @@ loaded_model = tf.keras.models.load_model(model_path)
 
 @app.post("{full_path:path}")
 async def predict(image: UploadFile = File(...)):
+    print("-1")
     img = Image.open(BytesIO(await image.read()))
-
+    print("zero")
     # Resize image and convert to grayscale
     img = img.resize((150,150)).convert('RGB')
     print("one")
