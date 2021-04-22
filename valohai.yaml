@@ -27,37 +27,12 @@
     name: Train model (MNIST)
     image: tensorflow/tensorflow:1.13.1-py3
     environment: azure-westeurope-f2sv2
-    command: python train.py {parameters}
-    parameters:
-      - name: max_steps
-        pass-as: --max_steps={v}
-        description: Number of steps to run the trainer
-        type: integer
-        default: 300
-      - name: learning_rate
-        pass-as: --learning_rate={v}
-        description: Initial learning rate
-        type: float
-        default: 0.001
-      - name: dropout
-        pass-as: --dropout={v}
-        description: Keep probability for training dropout
-        type: float
-        default: 0.9
-      - name: batch_size
-        pass-as: --batch_size={v}
-        description: Training batch size (larger batches are usually more efficient on GPUs)
-        type: integer
-        default: 200
+    command: python train.py
     inputs:
-      - name: training-set-images
+      - name: Train
         default: https://valohaidemo.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz
-      - name: training-set-labels
+      - name: Test
         default: https://valohaidemo.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz
-      - name: test-set-images
-        default: https://valohaidemo.blob.core.windows.net/mnist/t10k-images-idx3-ubyte.gz
-      - name: test-set-labels
-        default: https://valohaidemo.blob.core.windows.net/mnist/t10k-labels-idx1-ubyte.gz
 
 - step:
     name: Batch inference (MNIST)
