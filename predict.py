@@ -12,11 +12,19 @@ from io import BytesIO
 
 app = FastAPI()
 
-model_path = 'model.h5'
+model_path = 'my_model.h5'
 loaded_model = None
-
-
-
+loaded_model = tf.keras.models.load_model(model_path)
+"""
+img = Image.open("/Users/mhdredwanalkurdi/Desktop/Tensorflow/Horses_vs_Humans/tmp/training/train/horses/horse23-9.png").convert('RGB')
+img.thumbnail(size, Image.ANTIALIAS)
+x = numpy.asarray(img)
+x = x * 1./255
+x = numpy.expand_dims(x, axis=0)
+images = numpy.vstack([x])
+classes = loaded_model.predict(images)
+print(classes)
+"""
 @app.post("{full_path:path}")
 async def predict(image: UploadFile = File(...)):
     img = Image.open(BytesIO(await image.read()))
