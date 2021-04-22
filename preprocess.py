@@ -18,7 +18,7 @@ path_validation_horse_or_human = TEST_IMAGES_DIR + "/validation.zip"
 
 
 
-
+OUTPUTS_DIR = os.getenv('VH_OUTPUTS_DIR', './outputs')
 #shutil.rmtree('/tmp')
 local_zip = path_horse_or_human
 zip_ref = zipfile.ZipFile(local_zip, 'r')
