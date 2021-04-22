@@ -24,15 +24,17 @@
 
 
 - step:
-    name: Train model (MNIST)
+    name: Train model (Horses Vs. Humans)
     image: tensorflow/tensorflow:2.2.2-gpu-py3
     environment: azure-westeurope-f2sv2
     command: python train.py
     inputs:
-      - name: Train
+      - name: training-set-images
+        default: datum://0178f908-8e2b-2f63-371a-9b61f91f8cdb
+      - name: test-set-images
+        default: datum://0178f908-93ff-5b6c-4fd2-f6bdf13532ed
+      - name: WEIGHTS
         default: https://valohaidemo.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz
-      - name: Test
-        default: https://valohaidemo.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz
 
 - step:
     name: Batch inference (MNIST)

@@ -33,10 +33,10 @@ zip_ref.close()
 
 print("Done")
 
-"""
+
 # our example directories and files
-train_dir = f'{getcwd()}/tmp/training/train'
-validation_dir = f'{getcwd()}/tmp/validation/validation'
+train_dir = os.path.join(OUTPUTS_DIR, "training") + '/training/train'
+validation_dir = os.path.join(OUTPUTS_DIR, "validation") + "/validation/validation/"
 
 train_horses_dir = os.path.join(train_dir, "horses")
 train_humans_dir = os.path.join(train_dir, "humans")
@@ -48,8 +48,9 @@ train_humans_fnames = os.listdir(train_humans_dir)
 validation_horses_fnames = os.listdir(validation_horses_dir)
 validation_humans_fnames = os.listdir(validation_humans_dir)
 
+
+
 print(len(train_horses_fnames))
 print(len(train_humans_fnames))
 print(len(validation_horses_fnames))
 print(len(validation_humans_fnames))
-"""

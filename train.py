@@ -6,6 +6,55 @@ from os import getcwd
 from tensorflow.keras.optimizers import RMSprop, Adam
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import os
+import zipfile
+import shutil
+
+
+INPUTS_DIR = os.getenv('VH_INPUTS_DIR', './inputs')
+TRAIN_IMAGES_DIR = os.path.join(INPUTS_DIR, "training-set-images")
+TEST_IMAGES_DIR = os.path.join(INPUTS_DIR, "test-set-images")
+
+
+
+# Get the Horse or Human dataset
+path_horse_or_human = TRAIN_IMAGES_DIR + "/train.zip"
+# Get the Horse or Human Validation dataset
+path_validation_horse_or_human = TEST_IMAGES_DIR + "/validation.zip"
+
+
+
+OUTPUTS_DIR = os.getenv('VH_OUTPUTS_DIR', './outputs')
+#shutil.rmtree('/tmp')
+local_zip = path_horse_or_human
+zip_ref = zipfile.ZipFile(local_zip, 'r')
+zip_ref.extractall(os.path.join(getcwd(), "training"))
+zip_ref.close()
+
+local_zip = path_validation_horse_or_human
+zip_ref = zipfile.ZipFile(local_zip, 'r')
+zip_ref.extractall(os.path.join(getcwd(), "validation"))
+zip_ref.close()
+
+
+print("Done")
+
+
+# our example directories and files
+train_dir = os.path.join(getcwd(), "training") + '/training/train'
+validation_dir = os.path.join(getcwd(), "validation") + "/validation/validation/"
+
+train_horses_dir = os.path.join(train_dir, "horses")
+train_humans_dir = os.path.join(train_dir, "humans")
+validation_horses_dir = os.path.join(validation_dir, "horses")
+validation_humans_dir = os.path.join(validation_dir, "humans")
+
+train_horses_fnames = os.listdir(train_horses_dir)
+train_humans_fnames = os.listdir(train_humans_dir)
+validation_horses_fnames = os.listdir(validation_horses_dir)
+validation_humans_fnames = os.listdir(validation_humans_dir)
+
+
 
 INPUTS_DIR = os.getenv('VH_INPUTS_DIR', './inputs')
 WEIGHTS = os.path.join(INPUTS_DIR, "WEIGHTS")
@@ -65,25 +114,6 @@ model.compile(optimizer = Adam(learning_rate=3e-4),
 
 model.summary()
 
-# Last few lines should be:
-
-# mixed7 (Concatenate)            (None, 7, 7, 768)    0           activation_248[0][0]
-#                                                                  activation_251[0][0]
-#                                                                  activation_256[0][0]
-#                                                                  activation_257[0][0]
-# __________________________________________________________________________________________________
-# flatten_4 (Flatten)             (None, 37632)        0           mixed7[0][0]
-# __________________________________________________________________________________________________
-# dense_8 (Dense)                 (None, 1024)         38536192    flatten_4[0][0]
-# __________________________________________________________________________________________________
-# dropout_4 (Dropout)             (None, 1024)         0           dense_8[0][0]
-# __________________________________________________________________________________________________
-# dense_9 (Dense)                 (None, 1)            1025        dropout_4[0][0]
-# ==================================================================================================
-# Total params: 47,512,481
-# Trainable params: 38,537,217
-# Non-trainable params: 8,975,264
-
 
 #  data-augmentation parameters to ImageDataGenerator
 train_datagen = ImageDataGenerator(
@@ -101,13 +131,6 @@ train_datagen = ImageDataGenerator(
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 
-
-INPUTS_DIR = os.getenv('VH_INPUTS_DIR', './inputs')
-Train = os.path.join(INPUTS_DIR, "Train")
-Test = os.path.join(INPUTS_DIR, "Test")
-
-train_dir = Train + "/training/train/"
-validation_dir = Test +  "validation/validation/"
 
 # Flow training images in batches of X using train_datagen generator
 train_generator = train_datagen.flow_from_directory(
@@ -134,9 +157,16 @@ history = model.fit(train_generator,
 
 
 
-%matplotlib inline
+# Save model and weights.
+outputs_dir = os.getenv('VH_OUTPUTS_DIR', './')
+output_file = os.path.realpath(os.path.join(outputs_dir, 'my_model.h5'))
+if not os.path.isdir(outputs_dir):
+    os.makedirs(outputs_dir)
 
-acc = history.history['acc']
+print('Saving trained model to %s' % output_file)
+model.save(output_file)
+
+"""acc = history.history['acc']
 val_acc = history.history['val_acc']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
@@ -150,4 +180,4 @@ plt.legend(loc=0)
 plt.figure()
 
 
-plt.show()
+plt.show()"""
