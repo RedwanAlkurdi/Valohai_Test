@@ -4,7 +4,9 @@
     name: Checking imports (Humans Vs. Horses)
     image: tensorflow/tensorflow:1.13.1-py3
     environment: azure-westeurope-f2sv2
-    command: python checking_imports.py
+    command:
+      - pip install matplotlib
+      - python checking_imports.py
 
 
 
