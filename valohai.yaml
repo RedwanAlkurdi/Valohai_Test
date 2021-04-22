@@ -9,21 +9,16 @@
       - python checking_imports.py
 
 
-
 - step:
-    name: Preprocess dataset (MNIST)
-    image: tensorflow/tensorflow:1.13.1-py3
+    name: Preprocess dataset (Horses Vs. Humans)
+    image: tensorflow/tensorflow:2.2.2-gpu-py3
     environment: azure-westeurope-f2sv2
     command: python preprocess.py
     inputs:
       - name: training-set-images
-        default: https://valohaidemo.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz
-      - name: training-set-labels
-        default: https://valohaidemo.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz
+        default: datum://0178f908-93ff-5b6c-4fd2-f6bdf13532ed
       - name: test-set-images
-        default: https://valohaidemo.blob.core.windows.net/mnist/t10k-images-idx3-ubyte.gz
-      - name: test-set-labels
-        default: https://valohaidemo.blob.core.windows.net/mnist/t10k-labels-idx1-ubyte.gz
+        default: datum://0178f908-8e2b-2f63-371a-9b61f91f8cdb
 
 - step:
     name: Train model (MNIST)
