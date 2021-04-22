@@ -3,3 +3,6 @@ keras
 matplotlib
 pillow
 numpy
+python-multipart
+fastapi
+Pillow
