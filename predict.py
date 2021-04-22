@@ -16,7 +16,7 @@ model_path = 'my_model.h5'
 loaded_model = None
 loaded_model = tf.keras.models.load_model(model_path)
 
-@app.post("/scorefile/") #("{full_path:path}")
+@app.post("/{full_path:path}")
 async def predict(image: UploadFile = File(...)):
 
     img = Image.open(BytesIO(await image.read()))
@@ -49,7 +49,7 @@ async def predict(image: UploadFile = File(...)):
 
 """
 curl -X 'POST' \
-  'http://127.0.0.1:8000/scorefile/' \
+  'https://valohai.cloud/evoila/horses-vs-humans/test-europe/20210422.9/Horses_Vs_Humans/scorefile/' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -F 'image=@horse1-241.png;type=image/png'"""
