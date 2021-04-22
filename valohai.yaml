@@ -2,7 +2,7 @@
 
 - step:
     name: Checking imports (Humans Vs. Horses)
-    image: tensorflow/tensorflow:1.13.1-py3
+    image: tensorflow/tensorflow:2.2.2-gpu-py3
     environment: azure-westeurope-f2sv2
     command:
       - pip install --disable-pip-version-check -r requirements.txt
