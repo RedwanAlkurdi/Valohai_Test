@@ -4,7 +4,7 @@ from tensorflow.keras import layers
 from tensorflow.keras import Model
 from os import getcwd
 from tensorflow.keras.optimizers import RMSprop, Adam
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
 import zipfile

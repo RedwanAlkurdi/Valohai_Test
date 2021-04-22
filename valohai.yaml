@@ -27,7 +27,9 @@
     name: Train model (Horses Vs. Humans)
     image: tensorflow/tensorflow:2.2.2-gpu-py3
     environment: azure-westeurope-f2sv2
-    command: python train.py
+    command:
+      - pip install --disable-pip-version-check -r requirements.txt 
+      - python train.py
     inputs:
       - name: training-set-images
         default: datum://0178f908-8e2b-2f63-371a-9b61f91f8cdb
