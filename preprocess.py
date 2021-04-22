@@ -6,13 +6,13 @@ import shutil
 
 
 INPUTS_DIR = os.getenv('VH_INPUTS_DIR', './inputs')
-TRAIN_IMAGES_DIR = os.path.join(INPUTS_DIR, "/train.zip")
-TEST_IMAGES_DIR = os.path.join(INPUTS_DIR, "/validation.zip")
+TRAIN_IMAGES_DIR = os.path.join(INPUTS_DIR, "training-set-images")
+TEST_IMAGES_DIR = os.path.join(INPUTS_DIR, "test-set-images")
 
 
 
 # Get the Horse or Human dataset
-path_horse_or_human = TRAIN_IMAGES_DIR 
+path_horse_or_human = TRAIN_IMAGES_DIR
 # Get the Horse or Human Validation dataset
 path_validation_horse_or_human = TEST_IMAGES_DIR
 
@@ -22,12 +22,12 @@ path_validation_horse_or_human = TEST_IMAGES_DIR
 #shutil.rmtree('/tmp')
 local_zip = path_horse_or_human
 zip_ref = zipfile.ZipFile(local_zip, 'r')
-zip_ref.extractall(os.path.join(OUTPUTS_DIR, "/training"))
+zip_ref.extractall(os.path.join(OUTPUTS_DIR, "training"))
 zip_ref.close()
 
 local_zip = path_validation_horse_or_human
 zip_ref = zipfile.ZipFile(local_zip, 'r')
-zip_ref.extractall(os.path.join(OUTPUTS_DIR, "/validation"))
+zip_ref.extractall(os.path.join(OUTPUTS_DIR, "validation"))
 zip_ref.close()
 
 
