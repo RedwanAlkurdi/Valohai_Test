@@ -1,5 +1,9 @@
 from fastapi import FastAPI, File, UploadFile
+import subprocess
 
+def install():
+    subprocess.call(['pip', 'install', "tensorflow=2.2.2"])
+install()
 import tensorflow as tf
 
 import numpy
