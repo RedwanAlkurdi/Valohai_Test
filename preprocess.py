@@ -2,16 +2,19 @@ import os
 import zipfile
 import shutil
 
+
+
+
 INPUTS_DIR = os.getenv('VH_INPUTS_DIR', './inputs')
-TRAIN_IMAGES_DIR = os.path.join(INPUTS_DIR, 'training-set-images')
-TEST_IMAGES_DIR = os.path.join(INPUTS_DIR, 'test-set-images')
+TRAIN_IMAGES_DIR = os.path.join(INPUTS_DIR, "/train.zip")
+TEST_IMAGES_DIR = os.path.join(INPUTS_DIR, "/validation.zip")
 
 
 
 # Get the Horse or Human dataset
-path_horse_or_human = TRAIN_IMAGES_DIR + "/train.zip"
+path_horse_or_human = TRAIN_IMAGES_DIR 
 # Get the Horse or Human Validation dataset
-path_validation_horse_or_human = TEST_IMAGES_DIR + "/validation.zip"
+path_validation_horse_or_human = TEST_IMAGES_DIR
 
 
 
