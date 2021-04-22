@@ -279,7 +279,7 @@
 - endpoint:
     name: Horses Vs. Humans
     description: predict horse or human from image inputs
-    image: tiangolo/uvicorn-gunicorn-fastapi:python3.7
+    image: tiangolo/uvicorn-gunicorn-fastapi:python3.8-2020-12-19
     server-command: uvicorn predict:app --host 0.0.0.0 --port 8000
     files:
         - name: model
