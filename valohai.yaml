@@ -14,7 +14,6 @@
     image: tensorflow/tensorflow:2.2.2-gpu-py3
     environment: azure-westeurope-f2sv2
     command:
-      - pip install zipfile
       - pip install shutil
       - python preprocess.py
     inputs:
