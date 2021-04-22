@@ -19,7 +19,7 @@
     inputs:
       - name: training-set-images
         default: datum://0178f908-93ff-5b6c-4fd2-f6bdf13532ed
-      - name: training-set-images
+      - name: test-set-images
         default: datum://0178f908-8e2b-2f63-371a-9b61f91f8cdb
 
 - step:
