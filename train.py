@@ -41,8 +41,8 @@ print("Done")
 
 
 # our example directories and files
-train_dir = os.path.join(getcwd(), "training") + '/training/train'
-validation_dir = os.path.join(getcwd(), "validation") + "/validation/validation/"
+train_dir = os.path.join(getcwd(), "training") + '/train'
+validation_dir = os.path.join(getcwd(), "validation") + "/validation"
 
 train_horses_dir = os.path.join(train_dir, "horses")
 train_humans_dir = os.path.join(train_dir, "humans")
