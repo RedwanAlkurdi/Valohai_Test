@@ -1,3 +1,4 @@
+valohai-utils
 tensorflow
 keras
 matplotlib
